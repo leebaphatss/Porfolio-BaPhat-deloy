@@ -1,12 +1,30 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production'
+// Lấy tên repo từ GITHUB_REPOSITORY hoặc dùng tên mặc định
+const getRepoName = () => {
+  if (process.env.GITHUB_REPOSITORY) {
+    const repoName = process.env.GITHUB_REPOSITORY.split('/')[1]
+    // Nếu repo là username.github.io thì không cần basePath
+    if (repoName.includes('.github.io')) {
+      return ''
+    }
+    return `/${repoName}`
+  }
+  // Nếu không có GITHUB_REPOSITORY (local dev), không dùng basePath
+  return ''
+}
+
+const basePath = isProd ? getRepoName() : ''
+const assetPrefix = isProd ? getRepoName() : ''
+
 const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
   },
   trailingSlash: true,
-  // Base path nếu deploy vào subdirectory (ví dụ: /repository-name)
-  // basePath: process.env.NODE_ENV === 'production' ? '' : '',
+  basePath: basePath,
+  assetPrefix: assetPrefix,
 }
 
 module.exports = nextConfig
