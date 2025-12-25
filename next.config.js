@@ -25,6 +25,10 @@ const nextConfig = {
   trailingSlash: true,
   basePath: basePath,
   assetPrefix: assetPrefix,
+  // Expose basePath cho client-side
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 }
 
 module.exports = nextConfig

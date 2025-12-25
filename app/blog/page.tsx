@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { blogPosts } from "@/lib/blog-posts"
 import { format } from "date-fns"
 import { Coffee, Zap, BookOpen, Calendar, Clock, ArrowRight, User, Tag } from "lucide-react"
+import { getAssetPath } from "@/lib/paths"
 
 export default function BlogPage() {
   const javaPosts = blogPosts.filter(post => post.category === "Java")
@@ -80,7 +81,7 @@ export default function BlogPage() {
                 <div className="flex justify-center mb-3">
                   <div className="relative w-20 h-20 neobrutal-border neobrutal-shadow">
                     <Image
-                      src="/assets/img/chandung/lebaphat.jpg"
+                      src={getAssetPath("/assets/img/chandung/lebaphat.jpg")}
                       alt="Lê Bá Phát"
                       fill
                       className="object-cover"
@@ -154,7 +155,11 @@ export default function BlogPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recentPosts.map((post) => (
-              <Link key={post.id} href={`/blog/${post.id}`}>
+              <Link 
+                key={post.id} 
+                href={`/blog/${post.id}`}
+                className="block h-full"
+              >
                 <Card className="hover:neobrutal-shadow-lg transition-all duration-300 bg-white h-full flex flex-col group cursor-pointer">
                   <CardHeader className="pb-4">
                     <div className="flex items-center justify-between mb-3">

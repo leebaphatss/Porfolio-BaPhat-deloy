@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Separator } from "@/components/ui/separator"
 import { Award, Code2, BookOpen, Coffee, Zap } from "lucide-react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog"
+import { getAssetPath } from "@/lib/paths"
 
 export default function Home() {
   const certificates = [
@@ -58,7 +59,7 @@ export default function Home() {
                 <div className="flex justify-center mb-4">
                   <div className="relative w-48 h-48 neobrutal-border neobrutal-shadow">
                     <Image
-                      src="/assets/img/chandung/lebaphat.jpg"
+                      src={getAssetPath("/assets/img/chandung/lebaphat.jpg")}
                       alt="Lê Bá Phát"
                       fill
                       className="object-cover"
@@ -166,7 +167,7 @@ export default function Home() {
                 >
                   <div className="relative w-full h-auto">
                     <Image
-                      src={`/assets/img/chungnhan/${cert}`}
+                      src={getAssetPath(`/assets/img/chungnhan/${cert}`)}
                       alt={`Chứng nhận ${index + 1}`}
                       width={400}
                       height={533}
@@ -191,7 +192,7 @@ export default function Home() {
             <div className="relative w-full bg-white p-3 flex-1 overflow-hidden flex items-center justify-center">
               <div className="relative w-full mx-auto" style={{ maxWidth: '900px', aspectRatio: '3/4' }}>
                 <Image
-                  src={`/assets/img/chungnhan/${selectedCertificate}`}
+                  src={getAssetPath(`/assets/img/chungnhan/${selectedCertificate}`)}
                   alt="Chứng nhận"
                   fill
                   className="object-contain"
