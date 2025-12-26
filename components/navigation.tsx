@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { Code2, Home, BookOpen } from "lucide-react"
+import { Code2, Home, BookOpen, FolderKanban } from "lucide-react"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -28,6 +28,19 @@ export function Navigation() {
             >
               <Home className="w-4 h-4 mr-2" />
               Home
+            </Button>
+          </Link>
+          <Link href="/projects">
+            <Button
+              variant={pathname?.startsWith("/projects") ? "default" : "ghost"}
+              className={cn(
+                pathname?.startsWith("/projects")
+                  ? "bg-blue-600 text-white hover:bg-blue-700"
+                  : "bg-white text-black hover:bg-gray-100"
+              )}
+            >
+              <FolderKanban className="w-4 h-4 mr-2" />
+              Dự Án
             </Button>
           </Link>
           <Link href="/blog">

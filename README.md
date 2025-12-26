@@ -36,13 +36,34 @@ npm run build
 npm start
 ```
 
+## Deploy lên GitHub Pages
+
+Dự án đã được cấu hình sẵn để deploy tự động lên GitHub Pages:
+
+1. **Push code lên GitHub:**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+
+2. **Bật GitHub Pages:**
+   - Vào Settings → Pages trong repository
+   - Source: chọn **GitHub Actions**
+   - Workflow sẽ tự động chạy khi push lên nhánh `main`
+
+3. **Kiểm tra deploy:**
+   - Vào tab **Actions** để xem quá trình build và deploy
+   - Sau khi hoàn thành, website sẽ có tại: `https://[username].github.io/[repository-name]`
+
 ## Cấu Trúc Dự Án
 
 ```
 ├── app/
 │   ├── blog/
 │   │   ├── [id]/
-│   │   │   └── page.tsx      # Trang chi tiết bài viết
+│   │   │   ├── page.tsx      # Trang chi tiết bài viết
+│   │   │   └── BlogPostContent.tsx
 │   │   └── page.tsx          # Trang danh sách blog
 │   ├── globals.css           # Global styles với Neobrutalism
 │   ├── layout.tsx            # Root layout
@@ -54,11 +75,14 @@ npm start
 ├── lib/
 │   ├── blog-posts.ts         # Dữ liệu bài viết
 │   └── utils.ts              # Utility functions
-└── public/
-    └── assets/
-        ├── img/
-        │   ├── chandung/     # Ảnh chân dung
-        │   └── chungnhan/    # Chứng nhận
+├── public/
+│   └── assets/
+│       ├── img/
+│       │   ├── chandung/     # Ảnh chân dung
+│       │   └── chungnhan/    # Chứng nhận
+└── .github/
+    └── workflows/
+        └── deploy.yml        # GitHub Actions workflow
 ```
 
 ## Bài Viết
@@ -78,14 +102,6 @@ Blog hiện có **9 bài viết** về Java & JavaScript:
 4. ES6+ Features - Những Tính Năng Hiện Đại Của JavaScript
 5. Fetch API - Giao Tiếp Với Server Trong JavaScript
 
-## Deploy
-
-Dự án được cấu hình với `output: 'export'` trong `next.config.js` để tạo static site có thể deploy lên:
-- GitHub Pages
-- Netlify
-- Vercel
-- Bất kỳ static hosting nào
-
 ## Tác Giả
 
 **Lê Bá Phát**
@@ -93,4 +109,3 @@ Dự án được cấu hình với `output: 'export'` trong `next.config.js` đ
 ## License
 
 MIT
-
